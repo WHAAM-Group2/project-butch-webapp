@@ -1,0 +1,39 @@
+import { Paper, Typography } from '@mui/material'
+import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
+import useGetPlayerStatus from '../hooks/useGetPlayerStatus';
+
+function GameStatus() {
+
+    const [status, setStatus] = useState(null);
+
+    var host = "192.168.1.164:5000"
+
+    var stat = useGetPlayerStatus("wael")
+
+
+    return (
+        <Paper style={{
+            margin: "5%",
+            padding: "10px",
+            textAlign: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+        }}
+
+            sx={{
+                backgroundColor: stat && stat['status'] === "playing" ? "green" : "rgb(50, 50, 100)",
+                color: "white"
+            }}
+
+        >
+            <h3>Status</h3> <br />
+                {stat && stat['status']}
+        </Paper>
+    )
+}
+
+export default GameStatus

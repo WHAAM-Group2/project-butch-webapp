@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Scoreboard from './comp/Scoreboard';
+import GameStatus from './comp/GameStatus';
+import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@mui/material';
+import SecondPage from './comp/SecondPage';
+import Header from './comp/Header';
 
 function App() {
+
+  // document.addEventListener('touchmove', function (e) {
+  //   e.preventDefault();
+  // }, { passive: false });
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: 'rgb(172,11,11)',
+      },
+      secondary: {
+        main: 'rgb(0, 0, 0)',
+      },
+    },
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+
+      <SecondPage />
+
+    </ThemeProvider>
   );
 }
 
