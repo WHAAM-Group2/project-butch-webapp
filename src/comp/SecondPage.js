@@ -3,16 +3,17 @@ import GameStatus from './GameStatus'
 import Header from './Header'
 import Scoreboard from './Scoreboard'
 
-function SecondPage() {
+function SecondPage(username) {
+
   return (
-      <div className="App">
+    <div className="second-page">
 
-          <Header />
+      
+      <GameStatus username = {username} />
+      <Scoreboard username = {username}/>
+      
 
-          <GameStatus />
-          <Scoreboard />
-
-      </div>
+    </div>
   )
 }
 

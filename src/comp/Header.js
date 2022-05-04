@@ -5,7 +5,8 @@ function Header() {
     return (
         <div style={{
             textAlign: "center",
-        }}>
+            marginTop: "5%",
+        }} className="logo">
             <img src={logo} alt="Logo" width={150} height={150} />
         </div>
     );

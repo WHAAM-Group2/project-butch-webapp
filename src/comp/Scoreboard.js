@@ -1,52 +1,66 @@
-import { List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
+import { Divider, List, ListItem, ListItemText, Paper, Stack, Typography } from '@mui/material';
 import React from 'react'
 import useApi from '../hooks/useApi';
+import Score from './Score';
 
 
-function Scoreboard() {
+function Scoreboard({username}) {
 
     const scoreboard = useApi("get_scoreboard");
 
     return (
-        <Paper style={{
-            margin: "5%",
-            textAlign: "center",
-            marginBottom: "15%",
-        }}
+        <div className="scoreboard">
+            < Paper style={{
+                textAlign: "center",
+            }}>
 
-            // sx={{
-            //     backgroundColor: "rgb(172,11,11)",
-            // }}
+                <h1>SCOREBOARD</h1>
 
-        >
+                <List style={{ overflow: "scroll" }}>
+                    {scoreboard &&
 
-            <h2>
-                Scoreboard
-            </h2>
+                        new Map(Object.entries(scoreboard)).get("games").map((game, index) => {
 
-            <List style={{ maxHeight: '100%', overflow: 'auto' }}>
-                {scoreboard &&
+                            return (
 
-                    new Map(Object.entries(scoreboard)).get("games").map((game) => {
-                        return (
+                                <div>
+                                    <Divider />
 
-                            <ListItem key={game.player} style={{
-                                textAlign: "center",
-                            }}>
-                                <ListItemText>
-                                    {game.player}
-                                </ListItemText>
-                                <ListItemText>
-                                    {game.score}
-                                </ListItemText>
-                            </ListItem>
+                                    <List component={Stack} direction="row">
+                                        <ListItem style={{
+                                            textAlign: "center",
+                                        }}>
 
-                        )
-                    })}
-            </List>
+                                            <ListItemText>
+                                                <b>{index + 1}</b>
+                                            </ListItemText>
+                                            <Divider orientation="vertical" flexItem />
 
-        </Paper>
+                                            <ListItemText>
+                                                {username.username === game.player ? <u><b>{game.player}</b></u> : game.player}
+                                            </ListItemText>
+
+                                        </ListItem>
+
+                                        <Divider orientation="vertical" flexItem />
+                                        <ListItem style={{
+                                            textAlign: "center",
+                                        }}>
+                                            <ListItemText>
+                                                {game.score} seconds
+                                            </ListItemText>
+                                        </ListItem>
+                                    </List>
+
+                                </div>
+                            )
+                        })}
+                </List>
+
+            </Paper >
+        </div>
     )
 }
 
 export default Scoreboard
+

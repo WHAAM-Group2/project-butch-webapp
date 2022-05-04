@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const useApi = (target) => {
 
     const [response, setResponse] = useState(null);
+    
     var host = "192.168.1.164:5000"
 
     const handleApiCall = () => {
