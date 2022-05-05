@@ -11,8 +11,8 @@ import FirstPage from './comp/FirstPage';
 function App() {
 
   const [username, setUsername] = useState(null);
-  const [displayPage, setDisplayPage] = useState(<FirstPage setUsername={setUsername} />)
-  const [bogusWord, setBogusWord] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [displayPage, setDisplayPage] = useState(<FirstPage setUsername={setUsername} errorMessage={errorMessage} />)
 
   const theme = createTheme({
     palette: {
@@ -39,24 +39,39 @@ function App() {
     'fuck',
   ]
 
+  //This function checks so the username doesnt contain swearwords and uppercases
   const bogusCheck = (nameOfUser) =>{
-      swear.includes(nameOfUser.toLowerCase()) ? setBogusWord(true) : setBogusWord(false)
-    
+    if(typeof nameOfUser === "string"){ 
+      if(nameOfUser !== nameOfUser.toLowerCase() || swear.includes(nameOfUser.toLowerCase())){
+        
+        setErrorMessage("Only lowercases and no swear words!");
+      }
+      else{
+        setErrorMessage("");
+      }
+    }
   }
 
   useEffect(() => { 
     bogusCheck(username)
   }, [username])
 
+  useEffect(() => {
+    setDisplayPage(<FirstPage setUsername={setUsername} errorMessage={errorMessage} />)
+
+  }, [errorMessage])
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Header />
         {displayPage}
+
         {displayPage.type === FirstPage ? <Button style={{
           minHeight: "100px",
           margin: "50px",
-        }} variant='contained' disabled={!username || bogusWord} onClick={() => setDisplayPage(<SecondPage username = {username} />)}>Start</Button> : null}
+        }} variant='contained' disabled={errorMessage !== ""} onClick={() => setDisplayPage(<SecondPage username = {username} />)}>Start</Button> : null}
+
       </div>
     </ThemeProvider>
 

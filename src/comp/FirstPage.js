@@ -1,7 +1,7 @@
 import { Paper, TextField } from '@mui/material'
 import React from 'react'
 
-function FirstPage({setUsername}) {
+function FirstPage({setUsername, errorMessage}) {
 
     return (
         <Paper style={{
@@ -46,6 +46,7 @@ function FirstPage({setUsername}) {
             </div>
 
             <TextField onChange={e => setUsername(e.target.value)} label="Username"></TextField>
+            <p style={{color:"#761217"}} >{errorMessage}</p>
 
         </Paper>
     )
