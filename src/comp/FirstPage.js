@@ -1,7 +1,8 @@
-import { Paper, TextField, Typography } from '@mui/material'
+import { Paper, TextField } from '@mui/material'
 import React from 'react'
 
 function FirstPage({setUsername}) {
+
     return (
         <Paper style={{
             margin: "5%",

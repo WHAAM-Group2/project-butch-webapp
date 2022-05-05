@@ -5,14 +5,14 @@ import { ThemeProvider } from '@emotion/react';
 import { Button, createTheme } from '@mui/material';
 import SecondPage from './comp/SecondPage';
 import Header from './comp/Header';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FirstPage from './comp/FirstPage';
 
 function App() {
 
   const [username, setUsername] = useState(null);
   const [displayPage, setDisplayPage] = useState(<FirstPage setUsername={setUsername} />)
-
+  const [bogusWord, setBogusWord] = useState(false);
 
   const theme = createTheme({
     palette: {
@@ -25,6 +25,28 @@ function App() {
     },
   })
 
+  const swear = [
+    'bitch',
+    'whore',
+    'asshole',
+    'bastard',
+    'cock',
+    'pussy',
+    'hoe',
+    'retard',
+    'crap',
+    'shit',
+    'fuck',
+  ]
+
+  const bogusCheck = (nameOfUser) =>{
+      swear.includes(nameOfUser.toLowerCase()) ? setBogusWord(true) : setBogusWord(false)
+    
+  }
+
+  useEffect(() => { 
+    bogusCheck(username)
+  }, [username])
 
   return (
     <ThemeProvider theme={theme}>
@@ -34,10 +56,14 @@ function App() {
         {displayPage.type === FirstPage ? <Button style={{
           minHeight: "100px",
           margin: "50px",
-        }} variant='contained' onClick={() => setDisplayPage(<SecondPage username = {username} />)}>Start</Button> : null}
+        }} variant='contained' disabled={!username || bogusWord} onClick={() => setDisplayPage(<SecondPage username = {username} />)}>Start</Button> : null}
       </div>
     </ThemeProvider>
+
+    
   );
+
+  
 }
 
 export default App;
