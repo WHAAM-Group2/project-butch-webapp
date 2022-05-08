@@ -6,7 +6,7 @@ import useGetPlayerStatus from '../hooks/useGetPlayerStatus';
 
 function GameStatus(username) {
 
-    var host = "192.168.50.30:5000"
+    var host = "192.168.0.7:5000"
 
     var stat = useGetPlayerStatus(username.username.username)
     

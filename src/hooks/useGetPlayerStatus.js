@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const useGetPlayerStatus = (player) => {
 
     const [response, setResponse] = useState(null);
-    var host = "192.168.50.30:5000"
+    var host = "192.168.0.7:5000"
 
     const handleApiCall = () => {
 

@@ -29,6 +29,7 @@ function App() {
     'bitch',
     'whore',
     'asshole',
+    'dick',
     'bastard',
     'cock',
     'pussy',
@@ -70,7 +71,7 @@ function App() {
         {displayPage.type === FirstPage ? <Button style={{
           minHeight: "100px",
           margin: "50px",
-        }} variant='contained' disabled={errorMessage !== ""} onClick={() => setDisplayPage(<SecondPage username = {username} />)}>Start</Button> : null}
+        }} variant='contained' disabled={!username || errorMessage !== ""} onClick={() => setDisplayPage(<SecondPage username = {username} />)}>Start</Button> : null}
 
       </div>
     </ThemeProvider>
