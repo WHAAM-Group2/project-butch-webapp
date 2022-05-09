@@ -13,7 +13,6 @@ function App() {
   const [username, setUsername] = useState(null);
   const [displayPage, setDisplayPage] = useState(<FirstPage setUsername={setUsername} />)
 
-
   const theme = createTheme({
     palette: {
       primary: {

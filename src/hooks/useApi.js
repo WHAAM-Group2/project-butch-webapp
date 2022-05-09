@@ -4,7 +4,7 @@ const useApi = (target) => {
 
     const [response, setResponse] = useState(null);
     
-    var host = "192.168.1.164:5000"
+    var host = "127.0.0.1:5000"
 
     const handleApiCall = () => {
 
