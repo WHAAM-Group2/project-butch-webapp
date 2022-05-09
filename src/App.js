@@ -41,19 +41,19 @@ function App() {
   ]
 
   //This function checks so the username doesnt contain swearwords and uppercases
-  const bogusCheck = (nameOfUser) =>{
-    if(typeof nameOfUser === "string"){ 
-      if(nameOfUser !== nameOfUser.toLowerCase() || swear.includes(nameOfUser.toLowerCase())){
-        
+  const bogusCheck = (nameOfUser) => {
+    if (typeof nameOfUser === "string") {
+      if (nameOfUser !== nameOfUser.toLowerCase() || swear.map(word => nameOfUser.includes(word)).includes(true)) {
+
         setErrorMessage("Only lowercases and no swear words!");
       }
-      else{
+      else {
         setErrorMessage("");
       }
     }
   }
 
-  useEffect(() => { 
+  useEffect(() => {
     bogusCheck(username)
   }, [username])
 
@@ -71,15 +71,15 @@ function App() {
         {displayPage.type === FirstPage ? <Button style={{
           minHeight: "100px",
           margin: "50px",
-        }} variant='contained' disabled={!username || errorMessage !== ""} onClick={() => setDisplayPage(<SecondPage username = {username} />)}>Start</Button> : null}
+        }} variant='contained' disabled={!username || errorMessage !== ""} onClick={() => setDisplayPage(<SecondPage username={username} />)}>Start</Button> : null}
 
       </div>
     </ThemeProvider>
 
-    
+
   );
 
-  
+
 }
 
 export default App;
