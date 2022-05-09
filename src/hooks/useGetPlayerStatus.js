@@ -26,8 +26,9 @@ const useGetPlayerStatus = (player) => {
 
     }
 
-    useEffect(() => {
 
+    useEffect(() => {
+        
         setInterval(() => {
             handleApiCall();
         }, 1000);
