@@ -4,11 +4,11 @@ const useApi = (target) => {
 
     const [response, setResponse] = useState(null);
     
-    var host = "127.0.0.1:5000"
+    var host = window.location.hostname;
 
     const handleApiCall = () => {
 
-        fetch(`http://${host}/api/${target}`).then(res => res.json()).then(data => {
+        fetch(`http://${host}:5000/api/${target}`).then(res => res.json()).then(data => {
             setResponse(data);
         }).catch(err => {
             console.log(err);

@@ -6,11 +6,11 @@ function useGetGameStatus() {
 
     const [response, setResponse] = useState(null);
 
-    var host = "127.0.0.1:5000";
+    var host = window.location.hostname;
 
     const handleApiCall = () => {
 
-        fetch(`http://${host}/api/get_game_ready_status`).then(res => res.json()).then(data => {
+        fetch(`http://${host}:5000/api/get_game_ready_status`).then(res => res.json()).then(data => {
             setResponse(data.status);
         }).catch(err => {
             console.log(err);

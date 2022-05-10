@@ -17,7 +17,7 @@ function App() {
 
   const gameStatus = useGetGameStatus();
 
-  const host = "127.0.0.1:5000";
+  const host = window.location.hostname
 
   const theme = createTheme({
     palette: {
@@ -65,7 +65,7 @@ function App() {
 
   const handleStartGame = () => {
 
-    fetch(`http://${host}/api/start_game`, {
+    fetch(`http://${host}:5000/api/start_game`, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

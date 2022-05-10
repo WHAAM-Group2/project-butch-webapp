@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 const useGetPlayerStatus = (player) => {
 
     const [response, setResponse] = useState(null);
-    var host = "127.0.0.1:5000"
+    var host = window.location.hostname
 
     const handleApiCall = () => {
 
-        fetch(`http://${host}/api/get_game_status`, {
+        fetch(`http://${host}:5000/api/get_game_status`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

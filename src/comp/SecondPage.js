@@ -6,7 +6,7 @@ import Scoreboard from './Scoreboard'
 
 function SecondPage(username) {
 
-  const game = useStartGame(username);
+  // const game = useStartGame(username);
 
   return (
     <div className="second-page">

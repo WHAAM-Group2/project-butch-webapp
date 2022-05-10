@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 const useStartGame = (player) => {
 
     const [response, setResponse] = useState(null);
-    var host = "127.0.0.1:5000"
+    var host = window.location.hostname
 
     const handleApiCall = () => {
 
-        fetch(`http://${host}/api/start_game`, {
+        fetch(`http://${host}:5000/api/start_game`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -26,7 +26,12 @@ const useStartGame = (player) => {
 
     }
 
-    handleApiCall()
+    useEffect(() => {
+        handleApiCall()
+
+      
+    }, [])
+    
 
     return response;
 
