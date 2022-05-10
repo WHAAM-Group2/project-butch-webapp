@@ -7,12 +7,17 @@ import SecondPage from './comp/SecondPage';
 import Header from './comp/Header';
 import { useState, useEffect } from 'react';
 import FirstPage from './comp/FirstPage';
+import useGetGameStatus from './hooks/useGetGameStatus';
 
 function App() {
 
   const [username, setUsername] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [displayPage, setDisplayPage] = useState(<FirstPage setUsername={setUsername} errorMessage={errorMessage} />)
+
+  const gameStatus = useGetGameStatus();
+
+  const host = "127.0.0.1:5000";
 
   const theme = createTheme({
     palette: {
@@ -46,40 +51,74 @@ function App() {
       if (nameOfUser !== nameOfUser.toLowerCase() || swear.map(word => nameOfUser.includes(word)).includes(true)) {
 
         setErrorMessage("Only lowercases and no swear words!");
+        // console.log(errorMessage)
       }
       else {
-        setErrorMessage("");
+        if (gameStatus && !gameStatus.status) {
+          setErrorMessage("");
+        }
       }
     }
+
+
   }
 
-  useEffect(() => {
+  const handleStartGame = () => {
+
+    fetch(`http://${host}/api/start_game`, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify({
+        username: username
+      }) // body data type must match "Content-Type" header
+    }) // parses response to JSON
+
+    // setErrorMessage("")
+    setDisplayPage(<SecondPage username={username} />)
+
+  }
+
+useEffect(() => {
+  bogusCheck(username)
+}, [username])
+
+useEffect(() => {
+  if (gameStatus && gameStatus.status && gameStatus.username !== username) {
+    setErrorMessage("Someone is playing!")
+  } else{
+    
     bogusCheck(username)
-  }, [username])
 
-  useEffect(() => {
-    setDisplayPage(<FirstPage setUsername={setUsername} errorMessage={errorMessage} />)
-
-  }, [errorMessage])
-
-  return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <Header />
-        {displayPage}
-
-        {displayPage.type === FirstPage ? <Button style={{
-          minHeight: "100px",
-          margin: "50px",
-        }} variant='contained' disabled={!username || errorMessage !== ""} onClick={() => setDisplayPage(<SecondPage username={username} />)}>Start</Button> : null}
-
-      </div>
-    </ThemeProvider>
+  }
+}, [gameStatus])
 
 
-  );
+useEffect(() => {
+  setDisplayPage(<FirstPage setUsername={setUsername} errorMessage={errorMessage} />)
+}, [errorMessage])
 
+return (
+  <ThemeProvider theme={theme}>
+    <div className="App">
+      <Header />
+      {displayPage}
 
+      {displayPage.type === FirstPage ? <Button style={{
+        minHeight: "100px",
+        margin: "50px",
+      }} variant='contained' disabled={!username || errorMessage !== ""} onClick={handleStartGame}>Start</Button> : null}
+
+    </div>
+  </ThemeProvider>
+);
 }
 
 export default App;

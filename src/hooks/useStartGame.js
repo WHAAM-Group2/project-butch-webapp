@@ -19,20 +19,14 @@ const useStartGame = (player) => {
             redirect: 'follow', // manual, *follow, error
             referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             body: JSON.stringify({
-                username: player
+                username: player.username
             }) // body data type must match "Content-Type" header
         }).then(beep => beep.json()).then(data => setResponse(data)); // parses response to JSON
 
 
     }
 
-    useEffect(() => {
-
-        setInterval(() => {
-            handleApiCall();
-        }, 1000);
-
-    }, []);
+    handleApiCall()
 
     return response;
 

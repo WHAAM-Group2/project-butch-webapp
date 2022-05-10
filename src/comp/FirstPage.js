@@ -16,7 +16,7 @@ function FirstPage({setUsername, errorMessage}) {
 
             <div>
                 <h1>
-                    Welcome to the game!
+                    Beat <b style={{color: "var(--secondary)"}}>BUTCH</b> and claim your prize!
                 </h1>
 
                 <p>
@@ -30,6 +30,10 @@ function FirstPage({setUsername, errorMessage}) {
                         </li>
                         <li>
                             Write your username in the text field
+                        </li>
+
+                        <li>
+                            Wait for the game to be ready
                         </li>
 
                         <li>
