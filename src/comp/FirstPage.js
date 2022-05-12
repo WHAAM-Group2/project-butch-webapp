@@ -33,15 +33,11 @@ function FirstPage({setUsername, errorMessage}) {
                         </li>
 
                         <li>
-                            Wait for the game to be ready
+                            When the game is ready for you, press START
                         </li>
 
                         <li>
-                            Click the button to start the game
-                        </li>
-
-                        <li>
-                            Try to get <b>BUTCH</b>'s snack. To win, you must stop moving when <b>BUTCH</b> is about to turn his head! <br /> <u><i>HINT: listen to the music!</i></u>
+                            Try to get <b>BUTCH</b>'s snack. To win, you must stop moving when <b>BUTCH</b> turns his head towards you! <br /> <u><i>HINT: listen to the music!</i></u>
                         </li> 
 
                     </ul>
