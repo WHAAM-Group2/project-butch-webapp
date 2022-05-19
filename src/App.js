@@ -48,7 +48,10 @@ function App() {
   //This function checks so the username doesnt contain swearwords and uppercases
   const bogusCheck = (nameOfUser) => {
     if (typeof nameOfUser === "string") {
-      if (swear.map(word => nameOfUser.toLowerCase().includes(word)).includes(true)) {
+
+      const noSpaceName = nameOfUser.replaceAll(" ", "");
+
+      if (swear.map(word => noSpaceName.toLowerCase().includes(word)).includes(true)) {
 
         setErrorMessage("No swear words!");
         // console.log(errorMessage)
