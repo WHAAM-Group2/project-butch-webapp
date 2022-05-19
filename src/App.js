@@ -91,10 +91,12 @@ useEffect(() => {
 }, [username])
 
 useEffect(() => {
+
   if (gameStatus && gameStatus.status && gameStatus.username !== username) {
     setErrorMessage("Someone is playing!")
   } else{
     
+    setErrorMessage("");
     bogusCheck(username)
 
   }
