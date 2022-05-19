@@ -65,6 +65,7 @@ function App() {
 
   const handleStartGame = () => {
 
+    
     fetch(`http://${host}:5000/api/start_game`, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -110,6 +111,16 @@ return (
     <div className="App">
       <Header />
       {displayPage}
+
+      {displayPage.type === FirstPage ? <Button style={{
+        minHeight: "100px",
+        margin: "50px",
+      }} variant='contained'onClick={()=> setDisplayPage(<SecondPage />)}>Scoreboard</Button> : null}
+
+      {displayPage.type === SecondPage ? <Button style={{
+        minHeight: "100px",
+        margin: "50px",
+      }} variant='contained'onClick={()=> setDisplayPage(<FirstPage setUsername={setUsername} errorMessage={errorMessage} />)}>Go Back</Button> : null} 
 
       {displayPage.type === FirstPage ? <Button style={{
         minHeight: "100px",

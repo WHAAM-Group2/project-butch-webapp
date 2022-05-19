@@ -1,7 +1,11 @@
 import { Paper, TextField } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function FirstPage({setUsername, errorMessage}) {
+
+    useEffect(() => {
+        setUsername(null)
+    }, [])
 
     return (
         <Paper style={{
