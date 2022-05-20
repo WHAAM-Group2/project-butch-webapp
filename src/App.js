@@ -115,7 +115,7 @@ return (
       {displayPage.type === FirstPage ? <Button style={{
         minHeight: "100px",
         margin: "50px",
-      }} variant='contained'onClick={()=> setDisplayPage(<SecondPage />)}>Scoreboard</Button> : null}
+      }} variant='contained'onClick={()=> setDisplayPage(<SecondPage username = "!spectator!" />)}>Scoreboard</Button> : null}
 
       {displayPage.type === SecondPage ? <Button style={{
         minHeight: "100px",

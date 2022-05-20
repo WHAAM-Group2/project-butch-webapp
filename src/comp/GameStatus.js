@@ -6,8 +6,10 @@ import useGetPlayerStatus from '../hooks/useGetPlayerStatus';
 
 function GameStatus(username) {
 
-    var stat = useGetPlayerStatus(username.username.username)
-    
+
+    var playerStat = useGetPlayerStatus(username.username.username);
+    var stat = username.username.username === "!spectator!" ? "Spectating..." : playerStat
+
     return (
         <div className="gamestatus">
 
@@ -21,19 +23,19 @@ function GameStatus(username) {
             }}
 
                 sx={{
-                    backgroundColor: stat ? stat && stat['status'] === ("playing" || "win") ? "var(--tertiary)" : "var(--primary)" 
-                    : "var(--secondary)",
+                    backgroundColor: stat ? stat && stat['status'] === ("playing" || "win") ? "var(--tertiary)" : "var(--primary)"
+                        : "var(--secondary)",
                     color: "white"
                 }}
 
             >
-                {stat ? 
+                {stat ?
 
-                    stat['status'] === "playing" ? "Playing!" : stat['status'] === "win" ? "You won!" : "You lost..." : "Waiting"
+                    stat['status'] === "playing" ? "Playing!" : stat['status'] === "win" ? "You won!" : username.username.username === "!spectator!" ? "Spectating..." : "You lost!" : "Waiting"
 
                 }
-                
-                    {/* // stat['status'] === "playing" ? "Playing!" : "Waiting..." : "Loading..."} */}
+
+                {/* // stat['status'] === "playing" ? "Playing!" : "Waiting..." : "Loading..."} */}
 
             </Paper >
 
