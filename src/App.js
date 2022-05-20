@@ -54,7 +54,6 @@ function App() {
       if (swear.map(word => noSpaceName.toLowerCase().includes(word)).includes(true)) {
 
         setErrorMessage("No swear words!");
-        // console.log(errorMessage)
       }
       else {
         if (gameStatus && !gameStatus.status) {
