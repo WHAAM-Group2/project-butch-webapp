@@ -5,7 +5,7 @@ import { useState } from 'react';
 import useGetPlayerStatus from '../hooks/useGetPlayerStatus';
 
 /**
- * @Author Adam Joseph
+ * @Author Adam Joseph & Wael Mahrous
  * 
  * Is a component that gets information from another component called useGetPlayerStatus and shows that information in a contained box if the player is playing, has lost or won. 
  * @param {*} username is the username that the player has entered in the first page 

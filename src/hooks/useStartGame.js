@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * @Author Adam Joseph & Wael Mahrous
+ * 
+ * This functions communicates with the python server to notify when a player has started a game. The information is used by the python server to update the database that someone is playing or not.
+ * @param {*} player is the player who started the game.
+ * @returns the information about if the game is started
+ */
 const useStartGame = (player) => {
 
     const [response, setResponse] = useState(null);

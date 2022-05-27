@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * @Author Adam Joseph & Wael Mahrous
+ * 
+ * This functions communicates with the python server to get the current playing players status
+ * @param {*} player is the player thats matches the information found in the database 
+ * @returns the data about the current players status
+ */
 const useGetPlayerStatus = (player) => {
 
     const [response, setResponse] = useState(null);

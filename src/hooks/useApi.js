@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * @Author Adam Joseph & Wael Mahrous
+ * 
+ * This function is used to make a API call to the python server to able communication. 
+ * @param {*} target 
+ * @returns 
+ */
 const useApi = (target) => {
 
     const [response, setResponse] = useState(null);

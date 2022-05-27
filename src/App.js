@@ -9,6 +9,13 @@ import { useState, useEffect } from 'react';
 import FirstPage from './comp/FirstPage';
 import useGetGameStatus from './hooks/useGetGameStatus';
 
+/**
+ * @Author Adam Joseph & Wael Mahrous
+ * 
+ * This is the main class for the whole program. Here all component calls that is important for a functional webapplication are called. 
+ * The logic for handling usernames and errormessage are done here and also the player interactive parts.
+ * @returns the components calls and interactive functions.
+ */
 function App() {
 
   const [username, setUsername] = useState(null);
@@ -45,7 +52,7 @@ function App() {
     'fuck',
   ]
 
-  //This function checks so the username doesnt contain swearwords and uppercases
+  //This function checks so the username doesnt contain swearwords
   const bogusCheck = (nameOfUser) => {
     if (typeof nameOfUser === "string") {
       if (swear.map(word => nameOfUser.toLowerCase().includes(word)).includes(true)) {
@@ -62,7 +69,9 @@ function App() {
 
 
   }
-
+  /**
+   * This function start a game and communicates with the pythonserver to start a game
+   */
   const handleStartGame = () => {
 
     fetch(`http://${host}:5000/api/start_game`, {

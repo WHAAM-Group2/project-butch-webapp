@@ -2,7 +2,7 @@ import { Paper, TextField } from '@mui/material'
 import React, { useEffect } from 'react'
 
 /**
- * @Author Adam Joseph
+ * @Author Adam Joseph & Wael Mahrous
  * 
  * This component handles information thats to be shown in the first page in the 
  * webapplication and listens for changes in the field where players inputs their username.

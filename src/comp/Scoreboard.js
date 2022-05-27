@@ -3,7 +3,13 @@ import React from 'react'
 import useApi from '../hooks/useApi';
 import Score from './Score';
 
-
+/**
+ * @Author Adam Joseph & Wael Mahrous
+ * 
+ * This component contains the design for the scoreboard shown in the second page of the webapplication and also does a API call to the python-server which then returns data about players score in the game 
+ * @param {*} username is the username that the player started the game with.
+ * @returns 
+ */
 function Scoreboard({username}) {
 
     const scoreboard = useApi("get_scoreboard");

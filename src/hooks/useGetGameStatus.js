@@ -2,6 +2,12 @@
 
 import { useState, useEffect } from "react";
 
+/**
+ * @Author Adam Joseph & Wael Mahrous
+ * 
+ * This function communicates with the python server to get the current game status.
+ * @returns the information sent from the python server
+ */
 function useGetGameStatus() {
 
     const [response, setResponse] = useState(null);
