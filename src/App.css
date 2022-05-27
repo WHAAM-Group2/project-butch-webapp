@@ -1,3 +1,9 @@
+/**
+* @Author Adam Joseph & Wael Mahrous
+*
+* This class is usally referred as a style sheet. It contains all informations for all the styles and colors thats being used the components and App.js
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 :root {
