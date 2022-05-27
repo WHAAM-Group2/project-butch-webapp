@@ -1,7 +1,20 @@
 import { Paper, TextField } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 
+/**
+ * @Author Adam Joseph
+ * 
+ * This component handles information thats to be shown in the first page in the 
+ * webapplication and listens for changes in the field where players inputs their username.
+ * @param {*} setUsername is where the players inputs are allocate continuously
+ * @param {*} errorMessage is the error messages to be shown while players inputs usernames that's not allowed 
+ * @returns the whole component and its information is returned
+ */
 function FirstPage({setUsername, errorMessage}) {
+
+    useEffect(() => {
+        setUsername(null)
+    }, [])
 
     return (
         <Paper style={{
@@ -44,7 +57,8 @@ function FirstPage({setUsername, errorMessage}) {
 
                 </p>
             </div>
-
+            
+            
             <TextField onChange={e => setUsername(e.target.value)} label="Username"></TextField>
             <p style={{color:"#761217"}} >{errorMessage}</p>
 
