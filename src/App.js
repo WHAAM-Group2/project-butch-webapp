@@ -53,6 +53,9 @@ function App() {
         setErrorMessage("No swear words!");
         // console.log(errorMessage)
       }
+      else if(username.indexOf(' ') >= 0){
+        setErrorMessage("No spaces!");
+      }
       else {
         if (gameStatus && !gameStatus.status) {
           setErrorMessage("");
@@ -125,7 +128,7 @@ return (
       {displayPage.type === FirstPage ? <Button style={{
         minHeight: "100px",
         margin: "50px",
-      }} variant='contained' disabled={!username || errorMessage !== ""} onClick={handleStartGame}>Start</Button> : null}
+      }} variant='contained' disabled={!username || errorMessage !== "" || username.indexOf(' ') >= 0} onClick={handleStartGame}>Start</Button> : null}
 
     </div>
   </ThemeProvider>
